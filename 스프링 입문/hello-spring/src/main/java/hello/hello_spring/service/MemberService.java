@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 // spring이 이 서비스를 컨테이너에 넣기위한 방법, @Service
-@Service
+
 public class MemberService {
     private final MemberRepository memberRepository;
 

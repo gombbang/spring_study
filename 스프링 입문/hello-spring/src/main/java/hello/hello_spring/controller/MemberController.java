@@ -4,6 +4,7 @@ import hello.hello_spring.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
+// 컨트롤러는 어쩔 수 없이 애노테이션으로 처리해야한다, 컨테이너가 관리하므로.
 @Controller
 public class MemberController {
 

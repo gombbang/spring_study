@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import java.util.*;
 
 // spring이 이 서비스를 컨테이너에 넣기위한 방법, @Repository
-@Repository
+
 public class MemoryMemberRepository implements MemberRepository {
     private static Map<Long, Member> store = new HashMap<>(); // 실무에선 동시성 문제로 concurrent로 해야함.
     private static long sequence = 0L; //동시성 문제로 Atomic Long을 써야함
