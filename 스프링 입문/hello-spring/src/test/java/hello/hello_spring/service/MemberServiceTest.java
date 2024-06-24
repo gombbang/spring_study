@@ -2,6 +2,8 @@ package hello.hello_spring.service;
 
 import hello.hello_spring.domain.Member;
 import hello.hello_spring.repository.MemoryMemberRepository;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -12,6 +14,16 @@ class MemberServiceTest {
 
     MemberService memberService;
     MemoryMemberRepository memberRepository;
+
+    @BeforeEach
+    public void beforeEach() {
+        memberRepository = new MemoryMemberRepository();
+        memberService = new MemberService(memberRepository);
+    }
+    @AfterEach
+    public void afterEach() {
+        memberRepository.clearStore();
+    }
     @Test
     void 회원가입_join이라고해도됌() {
         // given, 이런 상황이 주어졌어
@@ -43,7 +55,6 @@ class MemberServiceTest {
 //        }catch (IllegalStateException e) {
 //            assertThat(e.getMessage()).isEqualTo("이미 존재하는 회원입니다.");
 //        }
-        assertThrows(IllegalStateException.class -> )
         IllegalStateException e = assertThrows(IllegalStateException.class,
                 () -> memberService.join(member2));//예외가 발생해야 한다.
         assertThat(e.getMessage()).isEqualTo("이미 존재하는 회원입니다.");
