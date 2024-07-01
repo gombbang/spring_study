@@ -6,6 +6,7 @@ plugins {
 
 group = 'hello'
 version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
 
 java {
 	toolchain {
@@ -20,11 +21,31 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-    developmentOnly('org.springframework.boot:spring-boot-devtools')
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
+
+	//jdbc
+	//implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+	//runtimeOnly 'com.h2database:h2'
 }
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+tasks.withType(JavaCompile).configureEach {
+	options.fork = true
+	options.forkOptions.javaHome = javaToolchains.launcherFor {
+		languageVersion = JavaLanguageVersion.of(17)
+	}.get().metadata.installationPath.asFile
+}
+
+tasks.withType(Test).configureEach {
+	useJUnitPlatform()
+	options.fork = true
+	options.forkOptions.javaHome = javaToolchains.launcherFor {
+		languageVersion = JavaLanguageVersion.of(17)
+	}.get().metadata.installationPath.asFile
 }
