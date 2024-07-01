@@ -1,0 +1,7 @@
+jdbc:h2:C:\Users\donghoonHan\Downloads\inflearn\h2/test
+
+H2 DB 세팅
+
+
+jdbc:h2:tcp://localhost/~/test..?
+외려 이게 안먹힌다.
