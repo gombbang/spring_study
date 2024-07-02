@@ -5,3 +5,18 @@ H2 DB 세팅
 
 jdbc:h2:tcp://localhost/~/test..?
 외려 이게 안먹힌다.
+
+
+https://velog.io/@chang626/h2-database-%EC%B4%88%EA%B8%B0-%EC%84%A4%EC%A0%95
+
+jdbc:h2:C:\Users\donghoonHan\Downloads\inflearn\h2/test
+jdbc:h2:tcp://localhost/~/C:/Users/donghoonHan/Downloads/inflearn/h2/test
+
+Database "C:/Users/donghoonHan/test" not found
+-> jdbc:h2:tcp://localhost/~/test의 결과
+
+=> jdbc:h2:tcp://localhost/~/Downloads/inflearn/h2/test
+된다~
+
+
+
