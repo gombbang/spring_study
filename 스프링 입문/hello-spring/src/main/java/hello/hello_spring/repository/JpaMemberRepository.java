@@ -2,9 +2,11 @@ package hello.hello_spring.repository;
 
 import hello.hello_spring.domain.Member;
 import jakarta.persistence.EntityManager;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
+
 public class JpaMemberRepository implements MemberRepository {
     private final EntityManager em; // JPA는 모두 이걸로 동작한다.
     // jpa 라이브러리를 gradle에서 받은 이후로 부트가 자동으로 em을 생성해서 현재 DB와 연결까지 다 해준다. (application.properties)
