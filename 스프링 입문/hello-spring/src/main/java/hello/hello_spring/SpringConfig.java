@@ -22,24 +22,31 @@ public class SpringConfig {
 //    }
 
 //    @PersistenceContext // 스펙에서 하라는 내용이지만 없어도 된다고 함.
-    private EntityManager em;
+//    private EntityManager em;
+//
+//    @Autowired
+//    public SpringConfig (EntityManager em) {
+//        this.em = em;
+//    }
 
-    @Autowired
-    public SpringConfig (EntityManager em) {
-        this.em = em;
+    // 어떤 리포지토리를 쓰는지 안 알려줬지만, extends Jpa Repository(스프링데이터가 만든거)가 있으면 스프링 데이터가
+    // 어떤 구현체를 만들어서 그대로 넣어줘버린다.
+    private final MemberRepository memberRepository;
+    public SpringConfig(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
     }
 
     @Bean
     public MemberService memberService() {
-        return new MemberService(memberRepository());
+        return new MemberService(memberRepository);
     }
 
-    @Bean
-    public MemberRepository memberRepository() {
-
-//        return new MemoryMemberRepository();
-//        return new JdbcMemberRepository(dataSource);
-//        return new JdbcTemplateMemberRepository(dataSource);
-        return new JpaMemberRepository(em);
-    }
+//    @Bean
+//    public MemberRepository memberRepository() {
+//
+////        return new MemoryMemberRepository();
+////        return new JdbcMemberRepository(dataSource);
+////        return new JdbcTemplateMemberRepository(dataSource);
+//        return new JpaMemberRepository(em);
+//    }
 }
