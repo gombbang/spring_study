@@ -1,0 +1,40 @@
+RDB 에는 상속관계가 없다.
+슈퍼타입 / 서브타입 관계로 설계한다.
+-> 각 테이블에, 여러개의 쿼리를 통해 insert 해야한다.
+-> 조회 시 join 을 사용해야한다.
+
+
+객체는 참조로 연관관계를 맺는다.
+member
+	Team team
+
+	Team getTeam()
+
+데이터를 DB에 insert하기 무척 어렵다.
+
+객체 그래프 탐색.
+	member.getTeam member.getOrder 등 get을 통해 따라다닐 수 있어야한다.
+	내가 처음 만든 member 변수에 따라서 ...
+
+
+member.getTeam()이라고 했을 때, get Team하는 객체 그래프 탐색이 안된다.
+find를 통해 DB에서 가져온 데이터에 getTeam이 됐는지에 따라 다르다.
+DAO의 쿼리를 봐야 알 수 있다, 팀의 가져옴 YES / NO
+memberDAO.getMember(); 
+memberDAO.getMemberWithTeam(); 멤버와 팀까지 섞인 데이터를 가져온다.
+
+
+
+Member member1 = memberDAO.getMember(memberId);
+Member member2 = memberDAO.getMember(memberId);
+member1 != member2, 
+새로운 객체를만들어 sql 문을 때려박아 새로운 객체를 만든다.
+새로운 객체들이므로 서로 다름.
+
+DB의 객체지향화는 객체답게 할 수록 맵핑 작업이 매우 어렵다.
+매핑 작업 비용이 너무 많이 든다.
+
+
+자바에 객체를 넣고 빼듯 객체를 자바 컬렉션 저장하듯 할 수 없을까?
+-> java persistence API, JPA
+
