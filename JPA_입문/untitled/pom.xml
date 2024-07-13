@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>jpa-basic</groupId>
+  <artifactId>ex1-hello-jpa</artifactId>
+  <version>1.0.0</version>
+
+  <properties>
+    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.target>17</maven.compiler.target>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <dependencies>
+    <!-- JPA 하이버네이트 -->
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-core</artifactId>
+      <version>6.4.2.Final</version>
+    </dependency>
+<!--    jakarta.persistence, JPA 인터페이스의 구현체로 하이버네이트. 하이버네이트가 JPA 인터페이스를 가지고 있는 것.
+        jakarta.persistance가 인터페이스임.-->
+
+
+    <dependency>
+      <groupId>javax.xml.bind</groupId>
+      <artifactId>jaxb-api</artifactId>
+      <version>2.3.1</version>
+    </dependency>
+
+
+    <!-- H2 데이터베이스 -->
+<!--    다운로드 받은 H2 버전과 맞춰야한다, SELECT H2VERSION() FROM DUAL;-->
+    <dependency>
+      <groupId>com.h2database</groupId>
+      <artifactId>h2</artifactId>
+      <version>2.2.224</version>
+    </dependency>
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>RELEASE</version>
+      <scope>compile</scope>
+    </dependency>
+
+
+    <!--    <dependency>-->
+    <!--      <groupId>org.hibernate</groupId>-->
+    <!--      <artifactId>hibernate-entitymanager</artifactId>-->
+    <!--      <version>5.3.10.Final</version>-->
+    <!--    </dependency>-->
+<!--    &lt;!&ndash; H2 데이터베이스 &ndash;&gt;-->
+<!--    <dependency>-->
+<!--      <groupId>com.h2database</groupId>-->
+<!--      <artifactId>h2</artifactId>-->
+<!--      <version>1.4.199</version>-->
+<!--    </dependency>-->
+<!--    버전 합은 https://docs.spring.io/spring-boot/docs/2.3.9.RELEASE/reference/htmlsingle/ 처럼-->
+<!--    https://docs.spring.io/spring-boot/docs/에서 해당 버전에 맞는 내용을 찾아 들어가면 나온다.-->
+<!--    그 버전으로 합을 맞춰주는게 좋다.-->
+
+
+  </dependencies>
+</project>

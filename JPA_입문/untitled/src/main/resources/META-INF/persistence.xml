@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--JPA 버전이 2.2-->
+<persistence version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
+    <persistence-unit name="hello">
+        <properties>
+            <!-- 필수 속성, DB 접근 정보 -->
+            <property name="jakarta.persistence.jdbc.driver" value="org.h2.Driver"/>
+            <property name="jakarta.persistence.jdbc.user" value="sa"/>
+            <property name="jakarta.persistence.jdbc.password" value=""/>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:h2:tcp://localhost/~/Downloads/inflearn/h2/test"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
+<!--            DB 방언, DBMS 별 dialect, 각기 다른 SQL 문법과 함수를 맞춰준다. ex, 페이징 VARCHAR명 SQL내용-->
+<!--            Javax라는 건 다른 구현체를 써도 사용가능하다, hibernate는 hibernate 구현체의 전용 옵션이다.-->
+
+            <!-- 옵션 -->
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.use_sql_comments"  value="true"/>
+            <property name="hibernate.hbm2ddl.auto" value="create" />
+        </properties>
+    </persistence-unit>
+
+</persistence>
+
+<!--JPA에 내장된 Persistence 클래스 가
+	META-INF/persistence.xml 파일을 읽어서
+		EntityManagerFactory를 생성
+			EMF는 EntityManager들을 만들어냄 (필요할때마다 찍어냄)
+-->
