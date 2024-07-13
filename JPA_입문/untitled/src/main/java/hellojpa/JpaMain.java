@@ -22,13 +22,13 @@ public class JpaMain {
             Member member = new Member();
 
             member.setId(2L);
-            member.setName("HelloB");
+            member.setUsername("HelloB");
 
 
             Member member1 = new Member();
 
             member1.setId(1L);
-            member1.setName("HelloA");
+            member1.setUsername("HelloA");
             em.persist(member);
             em.persist(member1);
             tx.commit();
@@ -46,7 +46,7 @@ public class JpaMain {
             tx.begin();
 
             Member findMember = em.find(Member.class, 2L);
-            findMember.setName("이름을바꿨다,setName만");
+            findMember.setUsername("이름을바꿨다,setName만");
                 // 트랜잭션 커밋 이전에 바뀐 정보가 있는지 확인하고, 달라지면 update 쿼리를 날려준다.
 
             tx.commit();
@@ -76,7 +76,7 @@ public class JpaMain {
                     .getResultList();
 
             for (Member m : result) {
-                System.out.println("member.name = " + m.getName());
+                System.out.println("member.name = " + m.getUsername());
             }
 
             tx.commit();
