@@ -10,10 +10,21 @@ import java.util.Date;
 @Entity()
 @Getter
 @Setter
-@Table(uniqueConstraints = "id")
+//@Table(uniqueConstraints = "id")
+@SequenceGenerator(name = "member_seq_generator", sequenceName = "member_seq")
 public class Member {
-    @Id
-    private Long id;
+    @Id // 직접 할당 방법
+//    @GeneratedValue(strategy = GenerationType.IDENTITY) // 자동할당방법들, 아이덴티티는 db에게 위임하는 것, 알아서 하라고 db에게 맡김
+    // auto : db 방언에 맞게 만들어줌 ㅎㅎ
+//    sequence db 시퀀스 오브젝트 사용, oracle
+    // call next value for hb_seq -> 나온 값을 id에 넣어 보낸다.
+    //  seqence는 직접 만들 수 있어, @SequenceGenerator, 근데 굳이?
+    //seq와 identi는 각 DB별로 있고 없고가 있음, 그래서 방법으로 TABLE 전략
+        // 키 생성 전용 테이블을 만들어서 db 시퀀스를 흉내내는 전략인데, 모든 곳에서 쓰일 수 있지만 성능 개판이라고 함.
+
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "member_seq_generator")
+    private Long id;    // int는 초기화 데이터가 0이므로 애매, Integer도 애매.. sequence object는 10억 이상에서 한바퀴 끝남, 고로 Long
+
     @Column(name = "name")  //DB에서는 NAME으로 들어간다.
     private String username;
     private Integer age;
