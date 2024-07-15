@@ -11,7 +11,7 @@ import java.util.Date;
 @Getter
 @Setter
 //@Table(uniqueConstraints = "id")
-@SequenceGenerator(name = "member_seq_generator", sequenceName = "member_seq")
+@SequenceGenerator(name = "member_seq_generator", sequenceName = "member_seq", allocationSize = 50)
 public class Member {
     @Id // 직접 할당 방법
 //    @GeneratedValue(strategy = GenerationType.IDENTITY) // 자동할당방법들, 아이덴티티는 db에게 위임하는 것, 알아서 하라고 db에게 맡김
